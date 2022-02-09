@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response, Router } from 'express';
-import { NotFoundError } from '@src/util/error/NotFoundError';
+
 import auth from '@src/application/routes/auth.routes';
+import NotFoundError from '@src/util/error/NotFoundError';
 
 const routes = Router();
 

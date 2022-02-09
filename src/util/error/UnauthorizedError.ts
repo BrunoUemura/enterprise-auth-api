@@ -1,7 +1,7 @@
 import { HttpStatusCodes } from '@src/util/enum/HttpStatusCodes';
 import { CustomError } from '@src/util/error/CustomError';
 
-export class UnauthorizedError extends CustomError {
+export default class UnauthorizedError extends CustomError {
   statusCode = HttpStatusCodes.UNAUTHORIZED;
 
   constructor(public message: string) {

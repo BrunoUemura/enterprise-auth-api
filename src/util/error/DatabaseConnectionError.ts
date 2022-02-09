@@ -1,7 +1,7 @@
 import { HttpStatusCodes } from '@src/util/enum/HttpStatusCodes';
 import { CustomError } from '@src/util/error/CustomError';
 
-export class DatabaseConnectionError extends CustomError {
+export default class DatabaseConnectionError extends CustomError {
   statusCode = HttpStatusCodes.INTERNAL_SERVER_ERROR;
   message = 'Database Connection Error';
 

@@ -8,8 +8,9 @@ export default class SignUpUserController {
     next: NextFunction,
   ) {
     try {
-      const { email, password, role, department, manager } = request.params;
+      const { name, email, password, role, department, manager } = request.body;
       const result = await SignUpUserService.execute({
+        name,
         email,
         password,
         role,

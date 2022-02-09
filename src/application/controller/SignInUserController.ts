@@ -8,7 +8,7 @@ export default class SignInUserController {
     next: NextFunction,
   ) {
     try {
-      const { email, password } = request.params;
+      const { email, password } = request.body;
       const result = await SignInUserService.execute({
         email,
         password,

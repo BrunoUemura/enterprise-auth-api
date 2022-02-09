@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  auth-db:
+    image: postgres
+    container_name: auth-db
+    environment:
+      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: admin
+      POSTGRES_DB: ticketr_auth
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./data/pgdata_auth:/var/lib/postgresql/data

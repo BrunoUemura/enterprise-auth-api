@@ -1,7 +1,7 @@
 import { HttpStatusCodes } from '@src/util/enum/HttpStatusCodes';
 import { CustomError } from '@src/util/error/CustomError';
 
-export class BadRequestError extends CustomError {
+export default class BadRequestError extends CustomError {
   statusCode = HttpStatusCodes.BAD_REQUEST;
 
   constructor(public message: string) {

@@ -1,9 +1,8 @@
-export default class SignUpUser {
+export default class SignUpUserDTO {
+  name: string;
   email: string;
   password: string;
   role: string;
   department: string;
   manager: string;
-  created_at: Date;
-  updated_at: Date;
 }
