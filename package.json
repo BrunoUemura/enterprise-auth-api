@@ -1,19 +1,19 @@
 {
-  "name": "ticketr-auth-api",
+  "name": "enterprise-auth-api",
   "version": "1.0.0",
-  "description": "ticketr-auth-api",
+  "description": "enterprise-auth-api",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BrunoUemura/ticketr-auth-api.git"
+    "url": "git+https://github.com/BrunoUemura/enterprise-auth-api.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/BrunoUemura/ticketr-auth-api/issues"
+    "url": "https://github.com/BrunoUemura/enterprise-auth-api/issues"
   },
-  "homepage": "https://github.com/BrunoUemura/ticketr-auth-api#readme",
+  "homepage": "https://github.com/BrunoUemura/enterprise-auth-api#readme",
   "scripts": {
     "build": "tsc",
     "lint": "eslint .",
