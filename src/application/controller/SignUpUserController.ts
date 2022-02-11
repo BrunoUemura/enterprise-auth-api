@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import SignUpUserService from '../usecase/SignUpUserService';
+import SignUpUserService from '@src/application/service/user/SignUpUserService';
 
 export default class SignUpUserController {
   static async handle(

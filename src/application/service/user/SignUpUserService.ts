@@ -6,6 +6,7 @@ import SignUpResponseDTO from '@src/application/dto/SignUpResponseDTO';
 import { HttpStatusCodes } from '@src/util/enum/HttpStatusCodes';
 import BadRequestError from '@src/util/error/BadRequestError';
 import NotFoundError from '@src/util/error/NotFoundError';
+import PublishMessage from '@src/application/service/rabbitmq/PublishMessageService';
 
 export default class SignUpUserService {
   static async execute(data: SignUpUserDTO): Promise<SignUpResponseDTO> {
@@ -24,7 +25,8 @@ export default class SignUpUserService {
     if (!manager) throw new NotFoundError('Manager not found');
 
     const hashedPassword = await bcrypt.hash(data.password, 10);
-    await userRepository.create({
+
+    const user = await userRepository.create({
       data: {
         name: data.name,
         email: data.email,
@@ -34,6 +36,9 @@ export default class SignUpUserService {
         manager: data.manager,
       },
     });
+
+    const messageToPublish = { type: 'UserCreation', ...user };
+    await PublishMessage.execute('user', messageToPublish);
 
     return {
       status: HttpStatusCodes.CREATED,
