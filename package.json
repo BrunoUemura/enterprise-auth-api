@@ -20,6 +20,7 @@
     "prettier-format": "prettier --config .prettierrc 'src/**/**/*.ts' --write",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
+    "migration": "npx prisma migrate dev --name",
     "dev": "cross-env NODE_ENV=development ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
     "start": "cross-env NODE_ENV=production node dist/src/server.js"
   },
