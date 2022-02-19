@@ -12,3 +12,13 @@ services:
       - '5432:5432'
     volumes:
       - ./data/pgdata_auth:/var/lib/postgresql/data
+
+  auth-service:
+    container_name: auth-service
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - 5001:5001

@@ -1,1 +1,14 @@
+# directories
 node_modules/
+test/
+data/
+scripts/
+
+# files
+Dockerfile
+LICENSE
+README.md
+jest.config.js
+docker-compose.yml
+package-lock.json
+yarn.lock

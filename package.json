@@ -14,15 +14,21 @@
     "url": "https://github.com/BrunoUemura/enterprise-auth-api/issues"
   },
   "homepage": "https://github.com/BrunoUemura/enterprise-auth-api#readme",
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "scripts": {
     "build": "tsc",
     "lint": "eslint .",
     "prettier-format": "prettier --config .prettierrc 'src/**/**/*.ts' --write",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
-    "migration": "npx prisma migrate dev --name",
-    "dev": "cross-env NODE_ENV=development ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
-    "start": "cross-env NODE_ENV=production node dist/src/server.js"
+    "postinstall": "prisma generate",
+    "migrate": "prisma migrate deploy",
+    "seed": "ts-node prisma/seed.ts",
+    "docker": "sh ./scripts/build.sh",
+    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
+    "start": "node dist/src/server.js"
   },
   "dependencies": {
     "@prisma/client": "^3.9.1",
@@ -54,6 +60,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
+    "jest": "^27.5.1",
     "prettier": "^2.5.1",
     "prisma": "^3.9.1",
     "ts-node-dev": "^1.1.8",
