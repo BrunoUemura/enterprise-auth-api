@@ -2,14 +2,14 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
 import userRepository from '@src/application/repository/UserRepository';
-import SignInResponseDTO from '@src/application/dto/SignInResponseDTO';
-import SignInUserDTO from '@src/application/dto/SignInUserDTO';
+import Response from '@src/application/entity/Response';
+import SignInUser from '@src/application/entity/SignInUser';
 import NotFoundError from '@src/util/error/NotFoundError';
 import UnauthorizedError from '@src/util/error/UnauthorizedError';
 import { HttpStatusCodes } from '@src/util/enum/HttpStatusCodes';
 
 export default class SignInUserService {
-  static async execute(data: SignInUserDTO): Promise<SignInResponseDTO> {
+  static async execute(data: SignInUser): Promise<Response> {
     const user = await userRepository.findFirst({
       where: { email: data.email },
     });

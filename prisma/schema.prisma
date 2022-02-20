@@ -3,25 +3,41 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// datasource db {
-//   provider = "sqlite"
-//   url      = "file:./dev.db"
-// }
-
 generator client {
   provider = "prisma-client-js"
 }
 
 model User {
-  id          String @id @default(uuid())
-  name        String
-  email       String   @unique
-  password    String
-  role        String
-  department  String
-  manager     String
-  created_at  DateTime @default(now())
-  updated_at  DateTime @updatedAt
+  id                      String @id @default(uuid())
+  name                    String
+  email                   String @unique
+  password                String
+  role Role               @relation(fields: [role_id], references: [id])
+  role_id                 Int
+  department Department   @relation(fields: [department_id], references: [id])
+  department_id           Int
+  manager                 String
+  active                  Boolean @default(true)
+  created_at              DateTime @default(now())
+  updated_at              DateTime @updatedAt
 
   @@map("user")
+}
+
+model Role {
+  id          Int @id @default(autoincrement())
+  role        String @unique
+
+  user User[]
+
+  @@map("role")
+}
+
+model Department {
+  id          Int @id @default(autoincrement())
+  department  String @unique
+
+  user User[]
+
+  @@map("department")
 }
